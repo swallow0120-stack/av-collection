@@ -1,15 +1,77 @@
 {
-  "updated_at": "2026-09-17T18:37:59.926500+00:00",
-  "collection_count": 0,
+  "updated_at": "2026-09-18T20:57:24.812351+00:00",
+  "collection_count": 196,
   "data": [
     {
       "actress": "青空ひかり",
-      "latest": [],
+      "latest": [
+        {
+          "code": "START-637",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00637%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "START-620",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00637%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "START-599",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00637%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "START-588",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00637%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": true
+        },
+        {
+          "code": "START-568",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00637%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": true
+        }
+      ],
       "error": ""
     },
     {
       "actress": "鈴村あいり",
-      "latest": [],
+      "latest": [
+        {
+          "code": "ABF-382",
+          "date": "",
+          "url": "https://www.mgstage.com/product/product_detail/ABF-382/?aff=QTWJYS6BP24YCHBPG2PDC83284",
+          "owned": false
+        },
+        {
+          "code": "ABF-373",
+          "date": "",
+          "url": "https://www.mgstage.com/product/product_detail/ABF-382/?aff=QTWJYS6BP24YCHBPG2PDC83284",
+          "owned": false
+        },
+        {
+          "code": "ABF-364",
+          "date": "",
+          "url": "https://www.mgstage.com/product/product_detail/ABF-382/?aff=QTWJYS6BP24YCHBPG2PDC83284",
+          "owned": false
+        },
+        {
+          "code": "ABF-355",
+          "date": "",
+          "url": "https://www.mgstage.com/product/product_detail/ABF-382/?aff=QTWJYS6BP24YCHBPG2PDC83284",
+          "owned": false
+        },
+        {
+          "code": "ABF-346",
+          "date": "",
+          "url": "https://www.mgstage.com/product/product_detail/ABF-382/?aff=QTWJYS6BP24YCHBPG2PDC83284",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
@@ -19,52 +81,362 @@
     },
     {
       "actress": "木下ひまり",
-      "latest": [],
+      "latest": [
+        {
+          "code": "DSOD-049",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Ddsod00049%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "DSVR-065",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Ddsod00049%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "ROYD-350",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Ddsod00049%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "YUJ-072",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Ddsod00049%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SAVR-1124",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Ddsod00049%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "石川澪",
-      "latest": [],
+      "latest": [
+        {
+          "code": "MIDA-798",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dmida00798%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "MIDA-762",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dmida00798%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "MDVR-433",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dmida00798%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "MIDA-726",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dmida00798%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "MIDA-649",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dmida00798%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "明里つむぎ",
-      "latest": [],
+      "latest": [
+        {
+          "code": "FNS-248",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1fns00248%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "FNS-227",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1fns00248%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "FNS-220",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1fns00248%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "FNS-207",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1fns00248%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "FNS-193",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1fns00248%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "桃乃木かな",
-      "latest": [],
+      "latest": [
+        {
+          "code": "IPVR-317",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dipvr00317%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "IPZZ-698",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dipvr00317%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": true
+        },
+        {
+          "code": "IPZZ-672",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dipvr00317%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "IPVR-341",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dipvr00317%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "CKCK-018",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dipvr00317%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": true
+        }
+      ],
       "error": ""
     },
     {
       "actress": "白上咲花",
-      "latest": [],
+      "latest": [
+        {
+          "code": "SNOS-403",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00403%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-365",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00403%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": true
+        },
+        {
+          "code": "SNOS-326",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00403%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": true
+        },
+        {
+          "code": "SNOS-285",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00403%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-239",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00403%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "河北彩花",
-      "latest": [],
+      "latest": [
+        {
+          "code": "SNOS-377",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00377%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-371",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00377%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-320",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00377%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-275",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00377%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SONE-266",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00377%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "博多彩葉",
-      "latest": [],
+      "latest": [
+        {
+          "code": "SNOS-310",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00310%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": true
+        },
+        {
+          "code": "SNOS-270",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00310%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": true
+        },
+        {
+          "code": "SIVR-503",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00310%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-245",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00310%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-172",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00310%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "金松季歩",
-      "latest": [],
+      "latest": [
+        {
+          "code": "SNOS-342",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00342%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-309",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00342%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "MIRD-284",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00342%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-269",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00342%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-232",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00342%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "瀬戸環奈",
-      "latest": [],
+      "latest": [
+        {
+          "code": "SNOS-313",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00313%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-334",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00313%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-258",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00313%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SNOS-209",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00313%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SIVR-490",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00313%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "小宵こなん",
-      "latest": [],
+      "latest": [
+        {
+          "code": "SONE-312",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsone00312%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SONE-229",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsone00312%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SONE-267",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsone00312%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SONE-201",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsone00312%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SIVR-336",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsone00312%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
@@ -74,22 +446,146 @@
     },
     {
       "actress": "安齋らら",
-      "latest": [],
+      "latest": [
+        {
+          "code": "SSIS-357",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dssis00357%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SSIS-269",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dssis00357%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SSIS-262",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dssis00357%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SSIS-232",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dssis00357%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "SSIS-203",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dssis00357%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "七沢みあ",
-      "latest": [],
+      "latest": [
+        {
+          "code": "MIDA-744",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dmida00744%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "MIDA-703",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dmida00744%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "MIDA-668",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dmida00744%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "MIDA-632",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dmida00744%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "MIDA-596",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dmida00744%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "七海那美",
-      "latest": [],
+      "latest": [
+        {
+          "code": "DSOD-020",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Ddsod00020%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "ROYD-341",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Ddsod00020%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "DASS-995",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Ddsod00020%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "ROYD-332",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Ddsod00020%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "DASS-965",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Ddsod00020%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     },
     {
       "actress": "神木麗",
-      "latest": [],
+      "latest": [
+        {
+          "code": "START-636",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00636%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "START-626",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00636%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "START-608",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00636%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "START-596",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00636%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
+          "code": "3DSVR-1944",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00636%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        }
+      ],
       "error": ""
     }
   ]
