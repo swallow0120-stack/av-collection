@@ -6,15 +6,15 @@ import requests
 from bs4 import BeautifulSoup
 
 ACTRESSES=["青空ひかり","鈴村あいり","凰かなめ","木下ひまり","石川澪","明里つむぎ","桃乃木かな","白上咲花","河北彩花","博多彩葉","金松季歩","瀬戸環奈","小宵こなん","三上悠亞","安齋らら","七沢みあ","七海那美","神木麗"]
-CODE=re.compile(r"\\b(?:\\d[A-Z]{2,}|[A-Z]{2,})-\\d{2,6}(?:-V)?\\b",re.I)
-DATE=re.compile(r"(20\\d{2})[./\\-年](\\d{1,2})[./\\-月](\\d{1,2})")
+CODE=re.compile(r"\b(?:\d[A-Z]{2,}|[A-Z]{2,})-\d{2,6}(?:-V)?\b",re.I)
+DATE=re.compile(r"(20\d{2})[./\-年](\d{1,2})[./\-月](\d{1,2})")
 s=requests.Session();s.headers["User-Agent"]="Mozilla/5.0"
 
 html=Path("index.html").read_text(encoding="utf-8")
 owned={x.upper() for x in CODE.findall(html)}
 
 def latest(name):
-    url="https://av-wiki.net/?s="+quote(name)+"&post_type=product"
+    url="https://av-wiki.net/?s="+quote(name)+""
     r=s.get(url,timeout=30);r.raise_for_status()
     soup=BeautifulSoup(r.text,"html.parser")
     found=[]
