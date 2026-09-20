@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-19T20:45:01.413198+00:00",
+  "updated_at": "2026-09-20T20:52:39.915681+00:00",
   "collection_count": 196,
   "data": [
     {
@@ -227,33 +227,33 @@
       "actress": "白上咲花",
       "latest": [
         {
+          "code": "REBD-1067",
+          "date": "",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dh_346rebd01067%2F&af_id=dmm8234-027&ch_id=link",
+          "owned": false
+        },
+        {
           "code": "SNOS-403",
           "date": "",
-          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00403%2F&af_id=dmm8234-027&ch_id=link",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dh_346rebd01067%2F&af_id=dmm8234-027&ch_id=link",
           "owned": false
         },
         {
           "code": "SNOS-365",
           "date": "",
-          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00403%2F&af_id=dmm8234-027&ch_id=link",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dh_346rebd01067%2F&af_id=dmm8234-027&ch_id=link",
           "owned": true
         },
         {
           "code": "SNOS-326",
           "date": "",
-          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00403%2F&af_id=dmm8234-027&ch_id=link",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dh_346rebd01067%2F&af_id=dmm8234-027&ch_id=link",
           "owned": true
         },
         {
           "code": "SNOS-285",
           "date": "",
-          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00403%2F&af_id=dmm8234-027&ch_id=link",
-          "owned": false
-        },
-        {
-          "code": "SNOS-239",
-          "date": "",
-          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00403%2F&af_id=dmm8234-027&ch_id=link",
+          "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dh_346rebd01067%2F&af_id=dmm8234-027&ch_id=link",
           "owned": false
         }
       ],
