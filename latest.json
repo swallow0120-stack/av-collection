@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-20T20:52:39.915681+00:00",
-  "collection_count": 196,
+  "updated_at": "2026-09-21T22:01:29.751986+00:00",
+  "collection_count": 205,
   "data": [
     {
       "actress": "青空ひかり",
@@ -15,13 +15,13 @@
           "code": "START-620",
           "date": "",
           "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00637%2F&af_id=dmm8234-027&ch_id=link",
-          "owned": false
+          "owned": true
         },
         {
           "code": "START-599",
           "date": "",
           "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00637%2F&af_id=dmm8234-027&ch_id=link",
-          "owned": false
+          "owned": true
         },
         {
           "code": "START-588",
@@ -326,7 +326,7 @@
           "code": "SNOS-172",
           "date": "",
           "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3Dsnos00310%2F&af_id=dmm8234-027&ch_id=link",
-          "owned": false
+          "owned": true
         }
       ],
       "error": ""
@@ -571,7 +571,7 @@
           "code": "START-608",
           "date": "",
           "url": "https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D1start00636%2F&af_id=dmm8234-027&ch_id=link",
-          "owned": false
+          "owned": true
         },
         {
           "code": "START-596",
