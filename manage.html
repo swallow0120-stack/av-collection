@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>管理收藏</title><link rel="stylesheet" href="assets/site.css"><script src="assets/manage.js" defer></script></head>
+<body><main><header><p class="eyebrow">COLLECTION EDITOR</p><h1>管理收藏</h1><p><a href="index.html">← 回收藏網站</a></p></header>
+<p class="notice">這裡編輯的是本機草稿，不會直接修改正式網站。完成後匯出資料檔，再依下方步驟發布。原有核對過的收藏受到保護。</p>
+<p id="status" role="status">正在載入收藏資料…</p>
+<div id="editor" hidden>
+<div class="actions"><button id="export" type="button">匯出更新檔</button><button id="backup" type="button">下載正式版備份</button><button id="undo" type="button">復原上一步</button><button id="reset" type="button">放棄草稿</button></div>
+<details class="panel"><summary>如何發布到正式網站？</summary><ol><li>點「匯出更新檔」，取得 <code>catalog.json</code>。</li><li>開啟 <a href="https://github.com/swallow0120-stack/av-collection/tree/main/data" target="_blank" rel="noopener">GitHub 資料資料夾</a>，選 Add file → Upload files，上傳剛下載的檔案。</li><li>確認檔名是 <code>catalog.json</code>，按 Commit changes。網站會自動驗證及更新。</li><li>等待 Actions 顯示成功，再重新整理收藏網站。若驗證失敗，查看錯誤後修正資料。</li></ol><p>匯出的檔案也可作為備份；下次可使用「匯入草稿」繼續編輯。</p></details>
+<section class="panel"><h2 id="form-title">新增收藏</h2><form id="item-form"><div class="row"><label>番號<input id="code" required maxlength="30" placeholder="例如 ABC-001" autocomplete="off"></label><label>收藏分類<select id="item-category" required></select></label></div><label>參與者（可多選；個人分類未選時使用分類預設）<select id="cast" multiple size="5"></select></label><label>備註<textarea id="note" rows="2" maxlength="1000"></textarea></label><div class="actions"><button type="submit">儲存草稿</button><button id="cancel" type="button">取消編輯</button></div></form></section>
+<details class="panel"><summary>新增女優分類</summary><form id="category-form"><label>顯示姓名<input id="person-name" required maxlength="80"></label><label>別名（多個用 ／ 分隔）<input id="aliases" maxlength="200"></label><button type="submit">新增分類</button></form></details>
+<details class="panel"><summary>匯入草稿</summary><label>選擇之前匯出的 catalog.json<input id="import" type="file" accept=".json,application/json"></label><p>匯入會先驗證內容，再替換本機草稿；可用「復原上一步」還原。</p></details>
+<section class="panel"><label>尋找要修改的收藏<input id="manage-search" type="search" placeholder="番號或分類"></label><p id="summary"></p><table><thead><tr><th>番號</th><th>分類</th><th>操作</th></tr></thead><tbody id="items"></tbody></table></section>
+</div></main></body></html>
