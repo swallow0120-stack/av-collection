@@ -33,13 +33,15 @@ def validate(root):
     parser.feed((root / 'index.html').read_text(encoding='utf-8'))
     counts = Counter(parser.codes)
     baseline = set(json.loads((root / 'collection-baseline.json').read_text(encoding='utf-8')))
-    additions = set('SNOS-172 SNOS-149 SNOS-115 OFES-033 YUJ-172 MNGS-072 START-620 START-608 START-599'.split())
+    additions = set('SNOS-172 SNOS-149 SNOS-115 OFES-033 YUJ-072 MNGS-072 START-620 START-608 START-599'.split())
     checks = {
         'collection_count_203': len(parser.codes) == 203,
         'unique_203': len(counts) == 203,
         'baseline_194': len(baseline) == 194,
         'original_entries_preserved': baseline <= counts.keys(),
         'exact_expected_set': set(counts) == baseline | additions,
+        'YUJ-172_absent': 'YUJ-172' not in counts,
+        'YUJ-072_once': counts['YUJ-072'] == 1,
         'SNOS-323_absent': 'SNOS-323' not in counts,
         'SONE-323_present': counts['SONE-323'] == 1,
         '9SNOS-059_present': counts['9SNOS-059'] == 1,
