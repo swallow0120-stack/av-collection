@@ -55,7 +55,6 @@ async function refresh() {
 input.addEventListener('input',draw);
 checkButton.addEventListener('click',refresh);
 document.getElementById('purchase-clear').addEventListener('click',()=>{input.value='';draw();input.focus();});
-document.getElementById('purchase-example').addEventListener('click',()=>{input.value='START-568\n9SNOS-309';draw();refresh();});
 window.addEventListener('focus',()=>{if(Date.now()-loadedAt>60000)refresh();else draw();});
 window.addEventListener('storage',draw);
 setInterval(()=>{if(input.value)draw();},15000);
