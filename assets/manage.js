@@ -24,6 +24,15 @@ function validate(data) {
     codes.add(x.code);
     if (!cats.has(x.category) || !Array.isArray(x.people) || x.people.some(p => !people.has(p)) || new Set(x.people).size !== x.people.length || (x.note !== undefined && typeof x.note !== 'string')) throw Error('作品分類或參與者不正確。');
   });
+  const lookupNames = new Set(codes);
+  data.items.forEach(x => {
+    if (x.lookup_aliases !== undefined && !Array.isArray(x.lookup_aliases)) throw Error('查詢別名格式不正確。');
+    (x.lookup_aliases || []).forEach(alias => {
+      if (typeof alias !== 'string' || !/^\d*[A-Z]+-\d{3,6}(?:-V)?$/.test(alias)) throw Error('查詢別名格式不正確。');
+      if (lookupNames.has(alias)) throw Error(`${alias} 已是收藏或查詢別名，請勿重複新增（原號：${x.code}）。`);
+      lookupNames.add(alias);
+    });
+  });
   if (codes.has('SNOS-323') || codes.has('YUJ-172')) throw Error('包含已知誤植番號，請確認。');
   if (baseline.some(code => !codes.has(code))) throw Error('不得移除原有核對過的收藏；如需更正原始番號，請同步更新核對基準。');
 }
@@ -63,7 +72,8 @@ function download(data,name){const url=URL.createObjectURL(new Blob([JSON.string
 $('item-form').addEventListener('submit',e=>{e.preventDefault();attempt(()=>{
   const next=clone(draft),code=$('code').value.trim().toUpperCase(),category=$('item-category').value;
   const people=[...$('cast').selectedOptions].map(o=>o.value);
-  const item={code,category,people:people.length?people:next.categories.find(c=>c.id===category).people.slice(),note:$('note').value.trim()};
+  const existing=editing?next.items.find(x=>x.code===editing):{};
+  const item={...existing,code,category,people:people.length?people:next.categories.find(c=>c.id===category).people.slice(),note:$('note').value.trim()};
   if(editing){const index=next.items.findIndex(x=>x.code===editing);next.items[index]=item;}else next.items.push(item);
   save(next,'已儲存');resetForm();
 });});

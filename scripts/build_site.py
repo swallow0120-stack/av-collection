@@ -41,6 +41,12 @@ def validate(catalog):
         if not set(item['people']) <= people or len(item['people']) != len(set(item['people'])): raise ValueError('Invalid cast')
         if not isinstance(item.get('note', ''), str): raise ValueError('Invalid note')
     if not seen: raise ValueError('Empty catalog')
+    lookup_names = set(seen)
+    for item in catalog['items']:
+        for alias in item.get('lookup_aliases', []):
+            sort_key(alias)
+            if alias in lookup_names: raise ValueError('Ambiguous lookup alias: '+alias)
+            lookup_names.add(alias)
     if 'SNOS-323' in seen or 'YUJ-172' in seen: raise ValueError('Known incorrect code')
     # Protect the original verified collection; later additions may increase the total.
     baseline = set(json.loads((ROOT / 'data/migration-baseline.json').read_text(encoding='utf-8')))
@@ -65,15 +71,17 @@ def render(catalog):
         rows = []
         for item in items:
             cast = '／'.join(people[x]['name'] for x in item['people'])
-            search = ' '.join([item['code'], c['name'], item.get('note', ''), *[n for pid in item['people'] for n in [people[pid]['name'], *people[pid]['aliases']]]])
+            search = ' '.join([item['code'], *item.get('lookup_aliases', []), c['name'], item.get('note', ''), *[n for pid in item['people'] for n in [people[pid]['name'], *people[pid]['aliases']]]])
             detail = f'<small class="cast">共演：{esc(cast)}</small>' if len(item['people']) > 1 else ''
             note = f'<small class="cast">{esc(item["note"])}</small>' if item.get('note') else ''
             rows.append(f'<div class="entry" data-search="{esc(search, quote=True)}"><div class="code">{esc(item["code"])}</div>{detail}{note}</div>')
         sections.append(f'<section class="category" data-category="{esc(c["id"])}"><h2>【{title}】（<span>{len(items)}</span> 部）</h2>'+''.join(rows)+'</section>')
     return f'''<!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>我的收藏（{total} 部）</title><link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script></head>
-<body><main><header><p class="eyebrow">MY COLLECTION</p><h1>我的收藏</h1><p class="muted">依分類整理，隨時查找。</p><a class="button" href="manage.html">管理收藏</a></header>
+<title>購買前查重 · 我的收藏（{total} 部）</title><link rel="stylesheet" href="assets/site.css"><script src="assets/duplicate-check.js" defer></script><script src="assets/purchase.js" defer></script><script src="assets/site.js" defer></script></head>
+<body><main><header><p class="eyebrow">CHECK BEFORE YOU BUY</p><h1>先查有沒有，再購買</h1><p class="muted">輸入番號，避免重複購買。</p><a class="button" href="manage.html">管理收藏</a></header>
+<section class="purchase-panel" aria-label="購買前查重"><label for="purchase-codes">要買哪些？<textarea id="purchase-codes" rows="3" placeholder="輸入番號；多筆請一行一個" autocapitalize="characters" spellcheck="false"></textarea></label><p class="muted">大小寫、空格、連字號會自動整理。已確認別名直接顯示已收藏；其他前綴或版本差異會提醒核對。</p><div class="actions"><button id="purchase-check" type="button">更新資料並查重</button><button id="purchase-clear" type="button">清空</button><button id="purchase-example" type="button">試查這次買重複的兩部</button></div><p id="purchase-freshness" role="status">正在載入正式收藏…</p><p id="purchase-summary" role="status"></p><div id="purchase-results" aria-live="polite"></div></section>
+<h2>瀏覽已有收藏</h2>
 <div class="stats"><strong>{total}<small>收藏總數</small></strong><strong>0<small>重複</small></strong><strong>{pending}<small>待確認</small></strong></div>
 <div class="filters"><label>搜尋番號、姓名或別名<input id="search" type="search" placeholder="輸入關鍵字" autocomplete="off"></label><label>分類<select id="category">{''.join(options)}</select></label><button id="clear" type="button">清除</button></div>
 <p id="result-count" role="status">共 {total} 部</p><p id="empty" hidden>找不到符合的收藏，請調整搜尋條件。</p>

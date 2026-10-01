@@ -1874,7 +1874,10 @@
       "people": [
         "person-11"
       ],
-      "note": ""
+      "note": "",
+      "lookup_aliases": [
+        "SNOS-309"
+      ]
     },
     {
       "code": "9SNOS-342",

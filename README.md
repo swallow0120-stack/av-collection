@@ -4,6 +4,9 @@
 
 ## 使用方式
 
+購買前在首頁「購買前查重」貼上番號，可一次查多筆。查詢會重新讀取正式收藏；資料無法確認時不會把查無結果當成可放心購買。
+`SNOS-309` 是已確認的查詢別名，會對應原始收藏 `9SNOS-309`，顯示「已收藏，勿重複購買」。其他未確認的數字前綴或版本差異只顯示可能重複，原始番號不會被改寫。
+
 首頁可搜尋番號、姓名、別名及備註，也可以按分類篩選。所有數量與排序由資料自動產生。
 
 點「管理收藏」可新增收藏、修改歸屬分類、維護共演名單、加入備註、新增女優分類與別名。
@@ -39,6 +42,7 @@ Python 3.12，無第三方套件依賴。
 python scripts/build_site.py
 python validate_collection.py
 python -m unittest discover -s tests -v
+node --test tests/test_duplicate_check.cjs
 python -m http.server 8000
 ```
 

@@ -27,6 +27,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m unittest discover -s tests -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/test_duplicate_check.cjs
       - run: python scripts/build_site.py
       - run: python validate_collection.py
       - run: python scripts/build_site.py --check

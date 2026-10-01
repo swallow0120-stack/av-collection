@@ -44,5 +44,11 @@ class CatalogTests(unittest.TestCase):
     def test_sorting(self):
         codes=['YUJ-072','9SNOS-059','SNOS-003','START-172-V','START-172']
         self.assertEqual(sorted(codes,key=build.sort_key),['SNOS-003','9SNOS-059','START-172','START-172-V','YUJ-072'])
+    def test_confirmed_lookup_alias_preserved(self):
+        item=next(x for x in self.data['items'] if x['code']=='9SNOS-309')
+        self.assertIn('SNOS-309',item['lookup_aliases'])
+    def test_lookup_alias_cannot_be_added_as_duplicate(self):
+        self.data['items'].append({'code':'SNOS-309','category':self.data['categories'][0]['id'],'people':[],'note':''})
+        with self.assertRaises(ValueError): build.validate(self.data)
 
 if __name__ == '__main__': unittest.main()
