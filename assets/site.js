@@ -20,6 +20,14 @@ category.addEventListener('change', filter);
 document.querySelector('#clear').addEventListener('click', () => {search.value = ''; category.value = ''; filter(); search.focus();});
 
 // Keep the placeholder visible until an image has loaded successfully.
+const posterObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const img = entry.target.querySelector('[data-poster-src]');
+    img.src = img.dataset.posterSrc;
+    posterObserver.unobserve(entry.target);
+  });
+}, {rootMargin: '200px'}) : null;
 document.querySelectorAll('[data-poster-src]').forEach(img => {
   img.addEventListener('load', () => {
     img.hidden = false;
@@ -31,5 +39,6 @@ document.querySelectorAll('[data-poster-src]').forEach(img => {
     img.parentElement.classList.remove('has-poster');
     img.parentElement.setAttribute('aria-label', '暫無圖片');
   });
-  img.src = img.dataset.posterSrc;
+  if (posterObserver) posterObserver.observe(img.parentElement);
+  else img.src = img.dataset.posterSrc;
 });
