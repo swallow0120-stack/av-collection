@@ -40,6 +40,9 @@ def validate(catalog):
         if item['category'] not in categories: raise ValueError('Unknown category: '+item['code'])
         if not set(item['people']) <= people or len(item['people']) != len(set(item['people'])): raise ValueError('Invalid cast')
         if not isinstance(item.get('note', ''), str): raise ValueError('Invalid note')
+        if item.get('poster_url'):
+            poster_url = urlparse(item['poster_url'])
+            if poster_url.scheme != 'https' or not poster_url.netloc: raise ValueError('Invalid poster URL')
     if not seen: raise ValueError('Empty catalog')
     lookup_names = set(seen)
     for item in catalog['items']:
@@ -75,6 +78,8 @@ def render(catalog):
             detail = f'<div><dt>演員</dt><dd>{esc(cast) if cast else "尚未記錄"}</dd></div>'
             note = f'<div><dt>備註</dt><dd>{esc(item["note"])}</dd></div>' if item.get('note') else ''
             poster = '<div class="poster-slot" role="img" aria-label="暫無圖片"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="5" y="7" width="38" height="34" rx="4"/><circle cx="17" cy="18" r="4"/><path d="m6 34 11-10 8 7 7-8 10 11"/></svg><span>NO IMAGE</span><small>暫無圖片</small></div>'
+            if item.get('poster_url'):
+                poster = poster.replace('<svg ', f'<img hidden data-poster-src="{esc(item["poster_url"], quote=True)}" alt="{esc(item["code"])} 海報" decoding="async"><svg ', 1)
             rows.append(f'<article class="entry" data-search="{esc(search, quote=True)}">{poster}<div class="entry-heading"><div class="code" role="heading" aria-level="3">{esc(item["code"])}</div><span class="owned-badge">已收藏</span></div><dl class="entry-details">{detail}{note}</dl></article>')
         sections.append(f'<section class="category" data-category="{esc(c["id"])}"><h2>【{title}】（<span>{len(items)}</span> 部）</h2><div class="collection-grid">'+''.join(rows)+'</div></section>')
     return f'''<!doctype html>

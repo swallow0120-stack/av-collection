@@ -18,3 +18,18 @@ function filter() {
 search.addEventListener('input', filter);
 category.addEventListener('change', filter);
 document.querySelector('#clear').addEventListener('click', () => {search.value = ''; category.value = ''; filter(); search.focus();});
+
+// Keep the placeholder visible until an image has loaded successfully.
+document.querySelectorAll('[data-poster-src]').forEach(img => {
+  img.addEventListener('load', () => {
+    img.hidden = false;
+    img.parentElement.classList.add('has-poster');
+    img.parentElement.setAttribute('aria-label', img.alt);
+  });
+  img.addEventListener('error', () => {
+    img.hidden = true;
+    img.parentElement.classList.remove('has-poster');
+    img.parentElement.setAttribute('aria-label', '暫無圖片');
+  });
+  img.src = img.dataset.posterSrc;
+});

@@ -786,6 +786,7 @@
     },
     {
       "code": "START-525",
+      "poster_url": "https://example.com/images/START-525.jpg",
       "category": "category-01",
       "people": [
         "person-01"
