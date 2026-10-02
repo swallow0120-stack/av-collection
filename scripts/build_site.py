@@ -74,7 +74,9 @@ def render(catalog):
             search = ' '.join([item['code'], *item.get('lookup_aliases', []), c['name'], item.get('note', ''), *[n for pid in item['people'] for n in [people[pid]['name'], *people[pid]['aliases']]]])
             detail = f'<div><dt>演員</dt><dd>{esc(cast) if cast else "尚未記錄"}</dd></div>'
             note = f'<div><dt>備註</dt><dd>{esc(item["note"])}</dd></div>' if item.get('note') else ''
-            rows.append(f'<article class="entry" data-search="{esc(search, quote=True)}"><div class="entry-heading"><div class="code" role="heading" aria-level="3">{esc(item["code"])}</div><span class="owned-badge">已收藏</span></div><dl class="entry-details">{detail}{note}</dl></article>')
+            poster_path = f'assets/posters/{item["code"]}.jpg'
+            poster = f'<img class="entry-poster" src="{esc(poster_path, quote=True)}" alt="{esc(item["code"])} 收藏海報" loading="lazy" decoding="async">' if (ROOT / poster_path).is_file() else ''
+            rows.append(f'<article class="entry" data-search="{esc(search, quote=True)}">{poster}<div class="entry-heading"><div class="code" role="heading" aria-level="3">{esc(item["code"])}</div><span class="owned-badge">已收藏</span></div><dl class="entry-details">{detail}{note}</dl></article>')
         sections.append(f'<section class="category" data-category="{esc(c["id"])}"><h2>【{title}】（<span>{len(items)}</span> 部）</h2><div class="collection-grid">'+''.join(rows)+'</div></section>')
     return f'''<!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
