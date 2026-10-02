@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import quote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTER_URL_TEMPLATE = 'https://pics.dmm.co.jp/mono/movie/adult/1{code}/1{code}.jpg'
+POSTER_URL_TEMPLATE = 'https://pics.dmm.co.jp/mono/movie/adult/1{code}/1{code}pl.jpg'
 CODE = re.compile(r'([0-9]*)([A-Z]+)-([0-9]{3,6})(-V)?')
 
 def sort_key(code):
