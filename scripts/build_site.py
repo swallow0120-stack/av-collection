@@ -9,9 +9,11 @@ from urllib.parse import quote, urlparse
 ROOT = Path(__file__).resolve().parents[1]
 POSTER_URL_TEMPLATES = [
     'https://pics.dmm.co.jp/mono/movie/adult/1{code}/1{code}pl.jpg',
-    'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D{code5}%2F&af_id=dmm8234-027&ch_id=link',
     'https://awsimgsrc.dmm.co.jp/pics_dig/digital/video/{code5}/{code5}pl.jpg',
     'https://image.mgstage.com/images/prestige/{maker}/{number}/pb_e_{maker}-{number}.jpg',
+]
+PRODUCT_URL_TEMPLATES = [
+    'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D{code5}%2F&af_id=dmm8234-027&ch_id=link',
 ]
 CODE = re.compile(r'([0-9]*)([A-Z]+)-([0-9]{3,6})(-V)?')
 
@@ -93,7 +95,8 @@ def render(catalog):
                 'maker': maker, 'number': number, 'code': image_code, 'code5': image_code5,
             }.items()}
             poster_urls = [template.format(**values) for template in POSTER_URL_TEMPLATES]
-            poster = f'<div class="content-preview" data-preview-urls="{esc(json.dumps(poster_urls), quote=True)}" data-code="{esc(item["code"], quote=True)}"><div class="preview-stage">{poster}</div><div class="preview-controls"><a class="button preview-open" href="{esc(poster_urls[0], quote=True)}" target="_blank" rel="noopener noreferrer">開啟原網頁</a><button class="preview-next" type="button">下一個來源</button></div><p class="preview-status" role="status">預覽尚未載入</p></div>'
+            product_urls = [template.format(**values) for template in PRODUCT_URL_TEMPLATES]
+            poster = f'<div class="content-preview" data-preview-urls="{esc(json.dumps(poster_urls), quote=True)}" data-code="{esc(item["code"], quote=True)}"><div class="preview-stage">{poster}</div><div class="preview-controls"><a class="button preview-open" href="{esc(poster_urls[0], quote=True)}" target="_blank" rel="noopener noreferrer">開啟圖片來源</a><a class="button" href="{esc(product_urls[0], quote=True)}" target="_blank" rel="noopener noreferrer">開啟商品頁</a><button class="preview-next" type="button">下一個圖片來源</button></div><p class="preview-status" role="status">預覽尚未載入</p></div>'
             rows.append(f'<article class="entry" data-search="{esc(search, quote=True)}">{poster}<div class="entry-heading"><div class="code" role="heading" aria-level="3">{esc(item["code"])}</div><span class="owned-badge">已收藏</span></div><dl class="entry-details">{detail}{note}</dl></article>')
         sections.append(f'<section class="category" data-category="{esc(c["id"])}"><h2>【{title}】（<span>{len(items)}</span> 部）</h2><div class="collection-grid">'+''.join(rows)+'</div></section>')
     return f'''<!doctype html>
