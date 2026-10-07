@@ -8,8 +8,8 @@ from urllib.parse import quote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 POSTER_URL_TEMPLATES = [
-    'https://pics.dmm.co.jp/mono/movie/adult/1{code}/1{code}pl.jpg',
-    'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D{code}%2F&af_id=dmm8234-027&ch_id=link',
+    'https://example.com/images/{code}.jpg',
+    'https://example.com/details/{code5}',
 ]
 CODE = re.compile(r'([0-9]*)([A-Z]+)-([0-9]{3,6})(-V)?')
 
@@ -86,7 +86,7 @@ def render(catalog):
             parts = CODE.fullmatch(item['code'])
             image_code5 = (parts[1] + parts[2] + parts[3].zfill(5) + (parts[4] or '').replace('-', '')).lower()
             poster_urls = [template.format(code=quote(image_code, safe=''), code5=quote(image_code5, safe='')) for template in POSTER_URL_TEMPLATES]
-            poster = poster.replace('<svg ', f'<img hidden data-poster-urls="{esc(json.dumps(poster_urls), quote=True)}" alt="{esc(item["code"])} 海報" decoding="async"><svg ', 1)
+            poster = f'<div class="content-preview" data-preview-urls="{esc(json.dumps(poster_urls), quote=True)}" data-code="{esc(item["code"], quote=True)}"><div class="preview-stage">{poster}</div><div class="preview-controls"><a class="button preview-open" href="{esc(poster_urls[0], quote=True)}" target="_blank" rel="noopener noreferrer">開啟原網頁</a><button class="preview-next" type="button">下一個來源</button></div><p class="preview-status" role="status">預覽尚未載入</p></div>'
             rows.append(f'<article class="entry" data-search="{esc(search, quote=True)}">{poster}<div class="entry-heading"><div class="code" role="heading" aria-level="3">{esc(item["code"])}</div><span class="owned-badge">已收藏</span></div><dl class="entry-details">{detail}{note}</dl></article>')
         sections.append(f'<section class="category" data-category="{esc(c["id"])}"><h2>【{title}】（<span>{len(items)}</span> 部）</h2><div class="collection-grid">'+''.join(rows)+'</div></section>')
     return f'''<!doctype html>

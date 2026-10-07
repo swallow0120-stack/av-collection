@@ -53,3 +53,12 @@ python -m http.server 8000
 
 GitHub 每次提交均保留歷史。可還原某次 `data/catalog.json`，重新提交後網站會自動生成。
 遷移前快照與基準檔請保留；不需要因新增收藏就修改基準。
+
+## 內容預覽來源
+
+在 `scripts/build_site.py` 的 `POSTER_URL_TEMPLATES` 依優先順序設定 HTTPS 網址範本。
+`{code}` 是小寫且移除連字號的番號（例如 `sone219`），`{code5}` 將數字補到至少五位（例如 `sone00219`）。
+目前使用 example.com 示範來源。網址路徑以 jpg、jpeg、png、webp、gif、avif、svg 結尾時嘗試圖片，其他網址以網頁 iframe 預覽；這不是自動識別任意媒體內容。
+圖片失敗或超過 10 秒會試下一個來源。網頁是否被禁止嵌入無法可靠偵測，因此始終保留「開啟原網頁」與「下一個來源」按鈕；最後一個來源按下一個會回到第一個。
+第三方網頁使用 sandbox，部分互動或登入功能可能無法在框內使用，請直接開啟原網頁。
+驗證預覽行為：`node --test tests/test_preview.cjs`。

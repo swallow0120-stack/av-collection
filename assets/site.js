@@ -19,41 +19,75 @@ search.addEventListener('input', filter);
 category.addEventListener('change', filter);
 document.querySelector('#clear').addEventListener('click', () => {search.value = ''; category.value = ''; filter(); search.focus();});
 
-// Try each source once; keep NO IMAGE until a source succeeds.
-function loadPoster(img) {
-  const urls = JSON.parse(img.dataset.posterUrls);
-  let index = 0;
-  function next() {
-    if (index >= urls.length) return;
-    const probe = new Image();
-    const url = urls[index++];
-    let settled = false;
-    const timer = setTimeout(() => finish(false), 10000);
-    function finish(ok) {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      probe.onload = probe.onerror = null;
-      if (!ok) { next(); return; }
-      img.src = url;
-      img.hidden = false;
-      img.parentElement.classList.add('has-poster');
-      img.parentElement.setAttribute('aria-label', img.alt);
+// Web pages may reject framing without exposing a detectable error.
+// Always keep the original URL accessible, even after an iframe load event.
+function setupPreview(box) {
+  const urls = JSON.parse(box.dataset.previewUrls);
+  const stage = box.querySelector('.preview-stage');
+  const original = box.querySelector('.preview-open');
+  const next = box.querySelector('.preview-next');
+  const status = box.querySelector('.preview-status');
+  const placeholder = stage.firstElementChild.cloneNode(true);
+  let index = -1, generation = 0, timer;
+  function show(at) {
+    clearTimeout(timer);
+    index = at;
+    const attempt = ++generation;
+    stage.replaceChildren(placeholder.cloneNode(true));
+    const url = new URL(urls[index]);
+    original.href = url.href;
+    status.textContent = `來源 ${index + 1} / ${urls.length} · 載入中…`;
+    if (url.protocol !== 'https:') {
+      original.removeAttribute('href');
+      status.textContent = '來源必須使用 HTTPS。';
+      return;
     }
-    probe.onload = () => finish(probe.naturalWidth > 0);
-    probe.onerror = () => finish(false);
-    probe.src = url;
+    const isImage = /\.(?:jpe?g|png|webp|gif|avif|svg)$/i.test(url.pathname);
+    if (isImage) {
+      const image = new Image();
+      image.alt = box.dataset.code + ' 圖片';
+      image.className = 'preview-image';
+      let settled = false;
+      function finish(ok) {
+        if (settled || attempt !== generation) return;
+        settled = true;
+        clearTimeout(timer);
+        image.onload = image.onerror = null;
+        if (ok) {
+          stage.replaceChildren(image);
+          status.textContent = `來源 ${index + 1} / ${urls.length} · 圖片已載入`;
+        } else if (index + 1 < urls.length) show(index + 1);
+        else status.textContent = '圖片載入失敗，可開啟原網頁或切換來源。';
+      }
+      image.onload = () => finish(image.naturalWidth > 0);
+      image.onerror = () => finish(false);
+      timer = setTimeout(() => finish(false), 10000);
+      image.src = url.href;
+    } else {
+      const frame = document.createElement('iframe');
+      frame.title = box.dataset.code + ' 網頁預覽';
+      frame.setAttribute('sandbox', 'allow-scripts allow-forms allow-popups');
+      frame.referrerPolicy = 'no-referrer';
+      frame.src = url.href;
+      stage.replaceChildren(frame);
+      status.textContent = `來源 ${index + 1} / ${urls.length} · 若預覽空白或遭封鎖，請開啟原網頁。`;
+    }
   }
-  next();
+  next.disabled = urls.length < 2;
+  next.addEventListener('click', () => show((index + 1) % urls.length));
+  return () => { if (index < 0 && urls.length) show(0); };
 }
-const posterObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+const previewStarts = new WeakMap();
+const previewObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
-    posterObserver.unobserve(entry.target);
-    loadPoster(entry.target.querySelector('[data-poster-urls]'));
+    previewObserver.unobserve(entry.target);
+    previewStarts.get(entry.target)();
   });
 }, {rootMargin: '200px'}) : null;
-document.querySelectorAll('[data-poster-urls]').forEach(img => {
-  if (posterObserver) posterObserver.observe(img.parentElement);
-  else loadPoster(img);
+document.querySelectorAll('.content-preview').forEach(box => {
+  const start = setupPreview(box);
+  previewStarts.set(box, start);
+  if (previewObserver) previewObserver.observe(box);
+  else start();
 });
