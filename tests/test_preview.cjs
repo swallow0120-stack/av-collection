@@ -14,7 +14,7 @@ function fixture(urls){
  const box={dataset:{previewUrls:JSON.stringify(urls),code:'TEST-123'},querySelector(s){return {'.preview-stage':stage,'.preview-open':link,'.preview-next':next,'.preview-status':status}[s];}};
  const context={URL,Image:class{constructor(){probes.push(this);}},setTimeout(fn){timers.set(++id,fn);return id;},clearTimeout(id){timers.delete(id);},document:{createElement(tag){return {tag,setAttribute(k,v){this[k]=v;}};}}};
  vm.createContext(context);
- vm.runInContext(source.slice(source.indexOf('function setupPreview'),source.indexOf('const previewStarts')),context);
+ vm.runInContext(source.slice(source.indexOf('function setupPreview'),source.indexOf("document.querySelectorAll('.content-preview')")),context);
  const start=context.setupPreview(box);start();
  return {probes,timers,stage,link,next,status,start};
 }

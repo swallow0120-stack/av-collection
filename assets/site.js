@@ -74,17 +74,6 @@ function setupPreview(box) {
   next.addEventListener('click', () => show((index + 1) % urls.length));
   return () => { if (index < 0 && urls.length) show(0); };
 }
-const previewStarts = new WeakMap();
-const previewObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    previewObserver.unobserve(entry.target);
-    previewStarts.get(entry.target)();
-  });
-}, {rootMargin: '200px'}) : null;
 document.querySelectorAll('.content-preview').forEach(box => {
-  const start = setupPreview(box);
-  previewStarts.set(box, start);
-  if (previewObserver) previewObserver.observe(box);
-  else start();
+  setupPreview(box)();
 });
