@@ -19,26 +19,41 @@ search.addEventListener('input', filter);
 category.addEventListener('change', filter);
 document.querySelector('#clear').addEventListener('click', () => {search.value = ''; category.value = ''; filter(); search.focus();});
 
-// Keep the placeholder visible until an image has loaded successfully.
+// Try each source once; keep NO IMAGE until a source succeeds.
+function loadPoster(img) {
+  const urls = JSON.parse(img.dataset.posterUrls);
+  let index = 0;
+  function next() {
+    if (index >= urls.length) return;
+    const probe = new Image();
+    const url = urls[index++];
+    let settled = false;
+    const timer = setTimeout(() => finish(false), 10000);
+    function finish(ok) {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      probe.onload = probe.onerror = null;
+      if (!ok) { next(); return; }
+      img.src = url;
+      img.hidden = false;
+      img.parentElement.classList.add('has-poster');
+      img.parentElement.setAttribute('aria-label', img.alt);
+    }
+    probe.onload = () => finish(probe.naturalWidth > 0);
+    probe.onerror = () => finish(false);
+    probe.src = url;
+  }
+  next();
+}
 const posterObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
-    const img = entry.target.querySelector('[data-poster-src]');
-    img.src = img.dataset.posterSrc;
     posterObserver.unobserve(entry.target);
+    loadPoster(entry.target.querySelector('[data-poster-urls]'));
   });
 }, {rootMargin: '200px'}) : null;
-document.querySelectorAll('[data-poster-src]').forEach(img => {
-  img.addEventListener('load', () => {
-    img.hidden = false;
-    img.parentElement.classList.add('has-poster');
-    img.parentElement.setAttribute('aria-label', img.alt);
-  });
-  img.addEventListener('error', () => {
-    img.hidden = true;
-    img.parentElement.classList.remove('has-poster');
-    img.parentElement.setAttribute('aria-label', '暫無圖片');
-  });
+document.querySelectorAll('[data-poster-urls]').forEach(img => {
   if (posterObserver) posterObserver.observe(img.parentElement);
-  else img.src = img.dataset.posterSrc;
+  else loadPoster(img);
 });
