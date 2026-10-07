@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 POSTER_URL_TEMPLATES = [
     'https://example.com/images/{code}.jpg',
     'https://example.com/details/{code5}',
+    'https://example.com/{maker}/{number}/{code}.jpg',
 ]
 CODE = re.compile(r'([0-9]*)([A-Z]+)-([0-9]{3,6})(-V)?')
 
