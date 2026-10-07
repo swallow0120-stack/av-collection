@@ -19,8 +19,7 @@ search.addEventListener('input', filter);
 category.addEventListener('change', filter);
 document.querySelector('#clear').addEventListener('click', () => {search.value = ''; category.value = ''; filter(); search.focus();});
 
-// Web pages may reject framing without exposing a detectable error.
-// Always keep the original URL accessible, even after an iframe load event.
+// Only images are rendered inside the card. External pages stay behind an explicit link.
 function setupPreview(box) {
   const urls = JSON.parse(box.dataset.previewUrls);
   const stage = box.querySelector('.preview-stage');
@@ -64,13 +63,11 @@ function setupPreview(box) {
       timer = setTimeout(() => finish(false), 10000);
       image.src = url.href;
     } else {
-      const frame = document.createElement('iframe');
-      frame.title = box.dataset.code + ' 網頁預覽';
-      frame.setAttribute('sandbox', 'allow-scripts allow-forms allow-popups');
-      frame.referrerPolicy = 'no-referrer';
-      frame.src = url.href;
-      stage.replaceChildren(frame);
-      status.textContent = `來源 ${index + 1} / ${urls.length} · 若預覽空白或遭封鎖，請開啟原網頁。`;
+      const message = document.createElement('div');
+      message.className = 'preview-message';
+      message.textContent = '這是網頁連結，請點擊「開啟原網頁」查看。';
+      stage.replaceChildren(message);
+      status.textContent = `來源 ${index + 1} / ${urls.length} · 已準備開啟連結`;
     }
   }
   next.disabled = urls.length < 2;
