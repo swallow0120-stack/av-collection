@@ -41,8 +41,8 @@ function setupPreview(box) {
       status.textContent = '來源必須使用 HTTPS。';
       return;
     }
-    const isImage = /\.(?:jpe?g|png|webp|gif|avif|svg)$/i.test(url.pathname);
-    if (isImage) {
+    {
+      // Try the URL as an image first. Some image endpoints have no file extension.
       const image = new Image();
       image.alt = box.dataset.code + ' 圖片';
       image.className = 'preview-image';
@@ -56,23 +56,18 @@ function setupPreview(box) {
           stage.replaceChildren(image);
           status.textContent = `來源 ${index + 1} / ${urls.length} · 圖片已載入`;
         } else if (index + 1 < urls.length) show(index + 1);
-        else status.textContent = '圖片載入失敗，可開啟原網頁或切換來源。';
+        else {
+          const message = document.createElement('div');
+          message.className = 'preview-message';
+          message.textContent = '所有來源都已檢查；請點擊「開啟原網頁」查看。';
+          stage.replaceChildren(message);
+          status.textContent = `已檢查 ${urls.length} 個來源 · 請開啟原網頁查看`;
+        }
       }
       image.onload = () => finish(image.naturalWidth > 0);
       image.onerror = () => finish(false);
       timer = setTimeout(() => finish(false), 10000);
       image.src = url.href;
-    } else {
-      if (index < urls.length - 1) {
-        status.textContent = `來源 ${index + 1} / ${urls.length} · 無法在卡片顯示，繼續下一個來源…`;
-        show(index + 1);
-        return;
-      }
-      const message = document.createElement('div');
-      message.className = 'preview-message';
-      message.textContent = '所有來源都已檢查；請點擊「開啟原網頁」查看。';
-      stage.replaceChildren(message);
-      status.textContent = `已檢查 ${urls.length} 個來源 · 請開啟原網頁查看`;
     }
   }
   next.disabled = urls.length < 2;
