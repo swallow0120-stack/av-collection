@@ -10,7 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 POSTER_URL_TEMPLATES = [
     'https://pics.dmm.co.jp/mono/movie/adult/1{code}/1{code}pl.jpg',
     'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D{code5}%2F&af_id=dmm8234-027&ch_id=link',
-    'https://example.com/{maker}/{number}/{code}.jpg',
+    'https://awsimgsrc.dmm.co.jp/pics_dig/digital/video/{code5}/{code5}pl.jpg?f=webp',
+    'https://image.mgstage.com/images/prestige/{maker}/{number}/pb_e_{maker}-{number}.jpg',
 ]
 CODE = re.compile(r'([0-9]*)([A-Z]+)-([0-9]{3,6})(-V)?')
 
