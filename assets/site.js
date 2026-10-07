@@ -63,11 +63,16 @@ function setupPreview(box) {
       timer = setTimeout(() => finish(false), 10000);
       image.src = url.href;
     } else {
+      if (index < urls.length - 1) {
+        status.textContent = `來源 ${index + 1} / ${urls.length} · 無法在卡片顯示，繼續下一個來源…`;
+        show(index + 1);
+        return;
+      }
       const message = document.createElement('div');
       message.className = 'preview-message';
-      message.textContent = '這是網頁連結，請點擊「開啟原網頁」查看。';
+      message.textContent = '所有來源都已檢查；請點擊「開啟原網頁」查看。';
       stage.replaceChildren(message);
-      status.textContent = `來源 ${index + 1} / ${urls.length} · 已準備開啟連結`;
+      status.textContent = `已檢查 ${urls.length} 個來源 · 請開啟原網頁查看`;
     }
   }
   next.disabled = urls.length < 2;
