@@ -8,8 +8,8 @@ from urllib.parse import quote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 POSTER_URL_TEMPLATES = [
-    'https://example.com/images/{code}.jpg',
-    'https://example.com/images2/{code5}.jpg',
+    'https://pics.dmm.co.jp/mono/movie/adult/1{code}/1{code}pl.jpg',
+    'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D{code}%2F&af_id=dmm8234-027&ch_id=link',
 ]
 CODE = re.compile(r'([0-9]*)([A-Z]+)-([0-9]{3,6})(-V)?')
 
