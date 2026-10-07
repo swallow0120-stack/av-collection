@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 POSTER_URL_TEMPLATES = [
     'https://pics.dmm.co.jp/mono/movie/adult/1{code}/1{code}pl.jpg',
     'https://awsimgsrc.dmm.co.jp/pics_dig/digital/video/{code5}/{code5}pl.jpg',
+    'https://awsimgsrc.dmm.co.jp/pics_dig/digital/video/h_068{code5}/h_068{code5}pl.jpg?f=webp',
     'https://image.mgstage.com/images/prestige/{maker}/{number}/pb_e_{maker}-{number}.jpg',
 ]
 PRODUCT_URL_TEMPLATES = [
