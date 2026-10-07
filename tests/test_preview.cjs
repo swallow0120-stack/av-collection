@@ -19,7 +19,7 @@ function fixture(urls){
  return {probes,timers,stage,link,next,status,start};
 }
 const image='https://example.com/images/test123.jpg',page='https://example.com/details/test00123';
-test('successful image stops fallback',()=>{const f=fixture([image,page]);f.probes[0].naturalWidth=100;f.probes[0].onload();assert.equal(f.stage.node,f.probes[0]);assert.equal(f.link.href,image);assert.equal(f.timers.size,0);});
+test('successful image stops fallback',()=>{const f=fixture([image,page]);f.probes[0].naturalWidth=600;f.probes[0].naturalHeight=800;f.probes[0].onload();assert.equal(f.stage.node,f.probes[0]);assert.equal(f.link.href,image);assert.equal(f.timers.size,0);});
 test('failure scans webpage source and retains final link',()=>{const f=fixture([image,page]);f.probes[0].onerror();f.probes[1].onerror();assert.equal(f.stage.node.tag,'div');assert.match(f.stage.node.textContent,/所有來源都已檢查/);assert.equal(f.link.href,page);assert.match(f.status.textContent,/已檢查 2 個來源/);});
 test('timeout advances and late success cannot replace new source',()=>{const f=fixture([image,page]);const late=f.probes[0].onload;[...f.timers.values()][0]();f.probes[1].onerror();late();assert.match(f.stage.node.textContent,/所有來源都已檢查/);assert.equal(f.link.href,page);});
 test('manual next protects against stale callbacks and wraps',()=>{const f=fixture([image,page]);const late=f.probes[0].onload;f.next.click();f.probes[1].onerror();late();assert.match(f.stage.node.textContent,/所有來源都已檢查/);f.next.click();assert.equal(f.link.href,image);assert.equal(f.probes.length,3);});

@@ -64,7 +64,9 @@ function setupPreview(box) {
           status.textContent = `已檢查 ${urls.length} 個來源 · 請開啟原網頁查看`;
         }
       }
-      image.onload = () => finish(image.naturalWidth > 0);
+      // Tiny responses such as DMM's 90x122 "NOW PRINTING" placeholder
+      // are treated as unavailable and do not stop the source scan.
+      image.onload = () => finish(image.naturalWidth >= 200 && image.naturalHeight >= 200);
       image.onerror = () => finish(false);
       timer = setTimeout(() => finish(false), 10000);
       image.src = url.href;
