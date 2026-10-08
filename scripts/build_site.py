@@ -12,6 +12,7 @@ POSTER_URL_TEMPLATES = [
     'https://awsimgsrc.dmm.co.jp/pics_dig/digital/video/{code5}/{code5}pl.jpg',
     'https://awsimgsrc.dmm.co.jp/pics_dig/digital/video/h_068{code5}/h_068{code5}pl.jpg?f=webp',
     'https://image.mgstage.com/images/prestige/{maker}/{number}/pb_e_{maker}-{number}.jpg',
+    'https://pics.dmm.co.jp/mono/movie/adult/{legacy_code}/{legacy_code}pl.jpg',
 ]
 PRODUCT_URL_TEMPLATES = [
     'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D{code5}%2F&af_id=dmm8234-027&ch_id=link',
@@ -92,8 +93,9 @@ def render(catalog):
             maker = (parts[1] + parts[2]).lower()
             number = parts[3].lower()
             image_code5 = (parts[1] + parts[2] + parts[3].zfill(5) + (parts[4] or '').replace('-', '')).lower()
+            legacy_code = ('118' + image_code) if maker == 'fcb' else image_code
             values = {key: quote(value, safe='') for key, value in {
-                'maker': maker, 'number': number, 'code': image_code, 'code5': image_code5,
+                'maker': maker, 'number': number, 'code': image_code, 'code5': image_code5, 'legacy_code': legacy_code,
             }.items()}
             poster_urls = [template.format(**values) for template in POSTER_URL_TEMPLATES]
             product_urls = [template.format(**values) for template in PRODUCT_URL_TEMPLATES]
