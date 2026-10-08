@@ -2052,7 +2052,9 @@
     {
       "code": "FCB-008",
       "category": "category-22",
-      "people": [],
+      "people": [
+        "person-02"
+      ],
       "note": ""
     },
     {
