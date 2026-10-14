@@ -114,6 +114,10 @@ async function init(){try{ensurePosterField();
   [published,baseline]=await Promise.all(responses.map(r=>r.json()));validate(published);draft=clone(published);
   let message='已載入正式版。修改後請儲存草稿，再匯出發布。';
   try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved){validate(saved.catalog);if(saved.base===JSON.stringify(published)){draft=saved.catalog;message='已恢復尚未發布的本機草稿。';}else{message='正式版已有更新。舊草稿未自動套用；請先匯出舊草稿備份，再重新整理資料。';const b=document.createElement('button');b.textContent='下載舊草稿';b.onclick=()=>download(saved.catalog,'previous-draft.json');$('status').after(b);}}}catch(e){message='無法恢復本機草稿；已載入正式版。'+e.message;}
-  $('editor').hidden=false;ensurePublishField();render();status(message);
+  $('editor').hidden=false;ensurePublishField();render();
+  const requested=new URLSearchParams(location.search).get('edit');
+  if(requested){const target=draft.items.find(x=>x.code===requested.toUpperCase());if(target)editItem(target);}
+  status(message);
 }catch(e){status(e.message,true);}}
 init();
+
