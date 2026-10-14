@@ -50,6 +50,7 @@ def validate(catalog):
         if item['category'] not in categories: raise ValueError('Unknown category: '+item['code'])
         if not set(item['people']) <= people or len(item['people']) != len(set(item['people'])): raise ValueError('Invalid cast')
         if not isinstance(item.get('note', ''), str): raise ValueError('Invalid note')
+        if item.get('media_type', 'DVD') not in ('DVD', 'BD'): raise ValueError('Invalid media type')
         if item.get('poster_url'):
             poster_url = urlparse(item['poster_url'])
             if poster_url.scheme != 'https' or not poster_url.netloc: raise ValueError('Invalid poster URL')
@@ -88,6 +89,7 @@ def render(catalog):
             search = ' '.join([item['code'], *item.get('lookup_aliases', []), c['name'], item.get('note', ''), *[n for pid in item['people'] for n in [people[pid]['name'], *people[pid]['aliases']]]])
             detail = f'<div><dt>演員</dt><dd>{esc(cast) if cast else "尚未記錄"}</dd></div>'
             note = f'<div><dt>備註</dt><dd>{esc(item["note"])}</dd></div>' if item.get('note') else ''
+            media = f'<div><dt>格式</dt><dd>{esc(item.get("media_type", "DVD"))}</dd></div>'
             poster = '<div class="poster-slot" role="img" aria-label="暫無圖片"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="5" y="7" width="38" height="34" rx="4"/><circle cx="17" cy="18" r="4"/><path d="m6 34 11-10 8 7 7-8 10 11"/></svg><span>NO IMAGE</span><small>暫無圖片</small></div>'
             image_code = item['code'].lower().replace('-', '')
             parts = CODE.fullmatch(item['code'])
@@ -102,7 +104,7 @@ def render(catalog):
             product_urls = [template.format(**values) for template in PRODUCT_URL_TEMPLATES]
             poster = f'<div class="content-preview" data-preview-urls="{esc(json.dumps(poster_urls), quote=True)}" data-code="{esc(item["code"], quote=True)}"><div class="preview-stage">{poster}</div><div class="preview-controls"><a class="button preview-open" href="{esc(poster_urls[0], quote=True)}" target="_blank" rel="noopener noreferrer">開啟圖片來源</a><a class="button" href="{esc(product_urls[0], quote=True)}" target="_blank" rel="noopener noreferrer">開啟商品頁</a><button class="preview-next" type="button">下一個圖片來源</button></div><p class="preview-status" role="status">預覽尚未載入</p></div>'
             edit_link = f'<a class="button entry-edit" href="manage.html?edit={quote(item["code"], safe="")}">編輯</a>'
-            rows.append(f'<article class="entry" data-search="{esc(search, quote=True)}">{poster}<div class="entry-heading"><div class="code" role="heading" aria-level="3">{esc(item["code"])}</div><span class="owned-badge">已收藏</span></div><dl class="entry-details">{detail}{note}</dl><div class="entry-actions">{edit_link}</div></article>')
+            rows.append(f'<article class="entry" data-search="{esc(search, quote=True)}">{poster}<div class="entry-heading"><div class="code" role="heading" aria-level="3">{esc(item["code"])}</div><span class="owned-badge">已收藏</span></div><dl class="entry-details">{media}{detail}{note}</dl><div class="entry-actions">{edit_link}</div></article>')
         sections.append(f'<section class="category" data-category="{esc(c["id"])}"><h2>【{title}】（<span>{len(items)}</span> 部）</h2><div class="collection-grid">'+''.join(rows)+'</div></section>')
     return f'''<!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
