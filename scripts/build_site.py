@@ -106,7 +106,7 @@ def render(catalog):
         sections.append(f'<section class="category" data-category="{esc(c["id"])}"><h2>【{title}】（<span>{len(items)}</span> 部）</h2><div class="collection-grid">'+''.join(rows)+'</div></section>')
     return f'''<!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>購買前查重 · 我的收藏（{total} 部）</title><link rel="stylesheet" href="assets/site.css"><script src="assets/duplicate-check.js" defer></script><script src="assets/purchase.js" defer></script><script src="assets/site.js" defer></script></head>
+<title>購買前查重 · 我的收藏（{total} 部）</title><link rel="stylesheet" href="assets/site.css?v=card-style-2"><script src="assets/duplicate-check.js" defer></script><script src="assets/purchase.js" defer></script><script src="assets/site.js" defer></script></head>
 <body><main><header><p class="eyebrow">CHECK BEFORE YOU BUY</p><h1>先查有沒有，再購買</h1><p class="muted">輸入番號，避免重複購買。</p><a class="button" href="manage.html">管理收藏</a></header>
 <section class="purchase-panel" aria-label="購買前查重"><label for="purchase-codes">要買哪些？<textarea id="purchase-codes" rows="3" placeholder="輸入番號；多筆請一行一個" autocapitalize="characters" spellcheck="false"></textarea></label><p class="muted">大小寫、空格、連字號會自動整理。已確認別名直接顯示已收藏；其他前綴或版本差異會提醒核對。</p><div class="actions"><button id="purchase-check" type="button">更新資料並查重</button><button id="purchase-clear" type="button">清空</button></div><p id="purchase-freshness" role="status">正在載入正式收藏…</p><p id="purchase-summary" role="status"></p><div id="purchase-results" aria-live="polite"></div></section>
 <h2>瀏覽已有收藏</h2>
