@@ -65,15 +65,21 @@ function render() {
     tr.append(td);$('items').append(tr);
   });
 }
+function ensurePosterField(){
+  if($('poster-url')) return;
+  const label=document.createElement('label');label.textContent='自訂圖片網址（發布後所有裝置可見）';
+  const input=document.createElement('input');input.id='poster-url';input.type='url';input.placeholder='https://...jpg';label.append(input);
+  $('note').before(label);
+}
 function resetForm(){editing=null;$('item-form').reset();$('form-title').textContent='新增收藏';}
-function editItem(item){editing=item.code;$('form-title').textContent='編輯 '+item.code;$('code').value=item.code;$('item-category').value=item.category;options($('cast'),draft.people.map(p=>[p.id,p.name]),item.people);$('note').value=item.note||'';$('item-form').scrollIntoView({behavior:'smooth',block:'center'});$('code').focus();}
+function editItem(item){editing=item.code;$('form-title').textContent='編輯 '+item.code;$('code').value=item.code;$('item-category').value=item.category;options($('cast'),draft.people.map(p=>[p.id,p.name]),item.people);$('note').value=item.note||'';$('poster-url').value=item.poster_url||'';$('item-form').scrollIntoView({behavior:'smooth',block:'center'});$('code').focus();}
 function attempt(fn){try{fn();}catch(e){status(e.message,true);}}
 function download(data,name){const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 $('item-form').addEventListener('submit',e=>{e.preventDefault();attempt(()=>{
   const next=clone(draft),code=$('code').value.trim().toUpperCase(),category=$('item-category').value;
   const people=[...$('cast').selectedOptions].map(o=>o.value);
   const existing=editing?next.items.find(x=>x.code===editing):{};
-  const item={...existing,code,category,people:people.length?people:next.categories.find(c=>c.id===category).people.slice(),note:$('note').value.trim()};
+  const item={...existing,code,category,people:people.length?people:next.categories.find(c=>c.id===category).people.slice(),note:$('note').value.trim(),poster_url:$('poster-url').value.trim()};
   if(editing){const index=next.items.findIndex(x=>x.code===editing);next.items[index]=item;}else next.items.push(item);
   save(next,'已儲存');resetForm();
 });});
@@ -85,7 +91,7 @@ $('backup').addEventListener('click',()=>download(published,'catalog-backup.json
 $('undo').addEventListener('click',()=>attempt(()=>{if(!history.length)return;const previous=history[history.length-1];localStorage.setItem(KEY,JSON.stringify({base:JSON.stringify(published),catalog:previous}));history.pop();draft=previous;resetForm();render();status('已復原上一步（本機草稿）。');}));
 $('reset').addEventListener('click',()=>{if(confirm('放棄本機草稿並重新使用目前載入的正式版？'))attempt(()=>{localStorage.removeItem(KEY);draft=clone(published);history=[];resetForm();render();status('已放棄草稿。');});});
 $('import').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>5000000)throw Error('檔案過大。');const next=JSON.parse(await file.text());validate(next);if(confirm(`匯入 ${next.items.length} 部收藏並替換本機草稿？`)){save(next,'已匯入');resetForm();}}catch(err){status(err.message,true);}finally{e.target.value='';}});
-async function init(){try{
+async function init(){try{ensurePosterField();
   const responses=await Promise.all(['data/catalog.json','data/migration-baseline.json'].map(url=>fetch(url,{cache:'no-store'})));
   if(responses.some(r=>!r.ok))throw Error('讀取資料失敗，請重新整理。');
   [published,baseline]=await Promise.all(responses.map(r=>r.json()));validate(published);draft=clone(published);
