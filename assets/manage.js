@@ -61,7 +61,10 @@ function render() {
   list.forEach(item=>{
     const tr = document.createElement('tr');
     [item.code,categories.get(item.category)].forEach(text=>{const td=document.createElement('td');td.textContent=text;tr.append(td);});
-    const td=document.createElement('td'),edit=document.createElement('button');edit.textContent='編輯';edit.addEventListener('click',()=>editItem(item));td.append(edit);
+    const td=document.createElement('td');
+    const format=document.createElement('select');[['DVD','DVD'],['BD','BD']].forEach(([value,label])=>{const option=new Option(label,value);option.selected=(item.media_type||'DVD')===value;format.add(option);});
+    format.title='直接修改媒體格式';format.addEventListener('change',()=>attempt(()=>{const next=clone(draft),target=next.items.find(x=>x.code===item.code);target.media_type=format.value;save(next,`${item.code} 已改為 ${format.value}`);}));td.append(format);
+    const edit=document.createElement('button');edit.textContent='編輯';edit.addEventListener('click',()=>editItem(item));td.append(edit);
     if(!baseline.includes(item.code)){const remove=document.createElement('button');remove.textContent='刪除';remove.addEventListener('click',()=>{if(confirm(`刪除草稿中的 ${item.code}？`)) attempt(()=>{const next=clone(draft);next.items=next.items.filter(x=>x.code!==item.code);save(next,'已刪除');resetForm();});});td.append(remove);}
     tr.append(td);$('items').append(tr);
   });
