@@ -30,6 +30,7 @@
 .preview-controls{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .preview-controls .button,.preview-controls button{font-size:.75rem;padding:7px 9px}
 .preview-status{font-size:.72rem;color:var(--muted);margin:8px 0 0;overflow-wrap:anywhere}
+.media-filter{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}.media-filter button{font-size:.85rem;padding:6px 16px}.media-filter button.active{background:var(--accent);border-color:var(--accent);color:#fff}
 .entry-actions{display:flex;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
 .entry-edit{width:100%;text-align:center;font-size:.8rem;padding:7px 10px;background:var(--card);color:var(--accent);border-color:#b8cec0}
 .entry-edit:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
