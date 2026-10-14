@@ -53,6 +53,7 @@ def validate(catalog):
         if item.get('poster_url'):
             poster_url = urlparse(item['poster_url'])
             if poster_url.scheme != 'https' or not poster_url.netloc: raise ValueError('Invalid poster URL')
+        if item.get('poster_data_url') and (not isinstance(item['poster_data_url'], str) or not item['poster_data_url'].startswith('data:image/')): raise ValueError('Invalid poster data')
     if not seen: raise ValueError('Empty catalog')
     lookup_names = set(seen)
     for item in catalog['items']:
@@ -97,7 +98,7 @@ def render(catalog):
             values = {key: quote(value, safe='') for key, value in {
                 'maker': maker, 'number': number, 'code': image_code, 'code5': image_code5, 'legacy_code': legacy_code,
             }.items()}
-            poster_urls = ([item['poster_url']] if item.get('poster_url') else []) + [template.format(**values) for template in POSTER_URL_TEMPLATES]
+            poster_urls = ([item['poster_data_url']] if item.get('poster_data_url') else []) + ([item['poster_url']] if item.get('poster_url') else []) + [template.format(**values) for template in POSTER_URL_TEMPLATES]
             product_urls = [template.format(**values) for template in PRODUCT_URL_TEMPLATES]
             poster = f'<div class="content-preview" data-preview-urls="{esc(json.dumps(poster_urls), quote=True)}" data-code="{esc(item["code"], quote=True)}"><div class="preview-stage">{poster}</div><div class="preview-controls"><a class="button preview-open" href="{esc(poster_urls[0], quote=True)}" target="_blank" rel="noopener noreferrer">開啟圖片來源</a><a class="button" href="{esc(product_urls[0], quote=True)}" target="_blank" rel="noopener noreferrer">開啟商品頁</a><button class="preview-next" type="button">下一個圖片來源</button></div><p class="preview-status" role="status">預覽尚未載入</p></div>'
             rows.append(f'<article class="entry" data-search="{esc(search, quote=True)}">{poster}<div class="entry-heading"><div class="code" role="heading" aria-level="3">{esc(item["code"])}</div><span class="owned-badge">已收藏</span></div><dl class="entry-details">{detail}{note}</dl></article>')

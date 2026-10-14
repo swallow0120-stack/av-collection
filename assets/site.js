@@ -36,7 +36,7 @@ function setupPreview(box) {
     const url = new URL(urls[index]);
     original.href = url.href;
     status.textContent = `來源 ${index + 1} / ${urls.length} · 載入中…`;
-    if (url.protocol !== 'https:') {
+    if (url.protocol !== 'https:' && url.protocol !== 'data:') {
       original.removeAttribute('href');
       status.textContent = '來源必須使用 HTTPS。';
       return;

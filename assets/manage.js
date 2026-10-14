@@ -70,6 +70,9 @@ function ensurePosterField(){
   const label=document.createElement('label');label.textContent='自訂圖片網址（發布後所有裝置可見）';
   const input=document.createElement('input');input.id='poster-url';input.type='url';input.placeholder='https://...jpg';label.append(input);
   $('note').before(label);
+  const fileLabel=document.createElement('label');fileLabel.textContent='或上傳圖片（最多 2 MB）';
+  const file=document.createElement('input');file.id='poster-file';file.type='file';file.accept='image/jpeg,image/png,image/webp,image/gif';fileLabel.append(file);$('note').before(fileLabel);
+  file.addEventListener('change',()=>{const selected=file.files[0];if(!selected)return;if(selected.size>2*1024*1024){status('圖片不可超過 2 MB。',true);file.value='';return;}const reader=new FileReader();reader.onload=()=>{file.dataset.dataUrl=reader.result;status('圖片已載入草稿，儲存作品後會保留。');};reader.onerror=()=>status('無法讀取圖片。',true);reader.readAsDataURL(selected);});
 }
 function resetForm(){editing=null;$('item-form').reset();$('form-title').textContent='新增收藏';}
 function editItem(item){editing=item.code;$('form-title').textContent='編輯 '+item.code;$('code').value=item.code;$('item-category').value=item.category;options($('cast'),draft.people.map(p=>[p.id,p.name]),item.people);$('note').value=item.note||'';$('poster-url').value=item.poster_url||'';$('item-form').scrollIntoView({behavior:'smooth',block:'center'});$('code').focus();}
@@ -80,6 +83,7 @@ $('item-form').addEventListener('submit',e=>{e.preventDefault();attempt(()=>{
   const people=[...$('cast').selectedOptions].map(o=>o.value);
   const existing=editing?next.items.find(x=>x.code===editing):{};
   const item={...existing,code,category,people:people.length?people:next.categories.find(c=>c.id===category).people.slice(),note:$('note').value.trim(),poster_url:$('poster-url').value.trim()};
+  if($('poster-file').dataset.dataUrl)item.poster_data_url=$('poster-file').dataset.dataUrl;
   if(editing){const index=next.items.findIndex(x=>x.code===editing);next.items[index]=item;}else next.items.push(item);
   save(next,'已儲存');resetForm();
 });});
