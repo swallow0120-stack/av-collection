@@ -54,7 +54,8 @@ function render() {
   $('undo').disabled = !history.length;
   const term = $('manage-search').value.trim().toLowerCase();
   const categories = new Map(draft.categories.map(c=>[c.id,c.name]));
-  const list = draft.items.filter(x=>(x.code+' '+categories.get(x.category)).toLowerCase().includes(term));
+  const categoryOrder = new Map(draft.categories.map((c,i)=>[c.id,i]));
+  const list = draft.items.filter(x=>(x.code+' '+categories.get(x.category)).toLowerCase().includes(term)).sort((a,b)=>(categoryOrder.get(a.category)-categoryOrder.get(b.category))||a.code.localeCompare(b.code,undefined,{numeric:true}));
   $('summary').textContent = `草稿共 ${draft.items.length} 部 · 正式版 ${published.items.length} 部 · 顯示 ${list.length} 部`;
   $('items').replaceChildren();
   list.forEach(item=>{
