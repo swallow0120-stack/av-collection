@@ -1,12 +1,14 @@
 const search = document.querySelector('#search');
 const category = document.querySelector('#category');
+const mediaButtons = [...document.querySelectorAll('[data-media-filter]')];
+let mediaFilter = '';
 function filter() {
   const query = search.value.trim().toLocaleLowerCase();
   let total = 0;
   document.querySelectorAll('.category').forEach(section => {
     let visible = 0;
     section.querySelectorAll('.entry').forEach(entry => {
-      entry.hidden = Boolean(category.value && section.dataset.category !== category.value) || !entry.dataset.search.toLocaleLowerCase().includes(query);
+      entry.hidden = Boolean(category.value && section.dataset.category !== category.value) || Boolean(mediaFilter && entry.dataset.media !== mediaFilter) || !entry.dataset.search.toLocaleLowerCase().includes(query);
       if (!entry.hidden) visible++;
     });
     section.hidden = visible === 0;
@@ -17,6 +19,7 @@ function filter() {
 }
 search.addEventListener('input', filter);
 category.addEventListener('change', filter);
+mediaButtons.forEach(button => button.addEventListener('click', () => {mediaFilter=button.dataset.mediaFilter;mediaButtons.forEach(x=>x.classList.toggle('active',x===button));filter();}));
 document.querySelector('#clear').addEventListener('click', () => {search.value = ''; category.value = ''; filter(); search.focus();});
 
 // Only images are rendered inside the card. External pages stay behind an explicit link.
@@ -79,3 +82,4 @@ function setupPreview(box) {
 document.querySelectorAll('.content-preview').forEach(box => {
   setupPreview(box)();
 });
+
