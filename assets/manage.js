@@ -74,6 +74,17 @@ function ensurePosterField(){
   const file=document.createElement('input');file.id='poster-file';file.type='file';file.accept='image/jpeg,image/png,image/webp,image/gif';fileLabel.append(file);$('note').before(fileLabel);
   file.addEventListener('change',()=>{const selected=file.files[0];if(!selected)return;if(selected.size>2*1024*1024){status('圖片不可超過 2 MB。',true);file.value='';return;}const reader=new FileReader();reader.onload=()=>{file.dataset.dataUrl=reader.result;status('圖片已載入草稿，儲存作品後會保留。');};reader.onerror=()=>status('無法讀取圖片。',true);reader.readAsDataURL(selected);});
 }
+function ensurePublishField(){
+  if($('publish-token')) return;
+  const panel=document.createElement('section');panel.className='panel';
+  panel.innerHTML='<h2>一鍵發布</h2><p>輸入只授權此 repository Contents 寫入權限的 GitHub Token。Token 只在本次操作使用，不會保存。</p><label>GitHub Token<input id="publish-token" type="password" autocomplete="off" placeholder="github_pat_..."></label><button id="publish" type="button">發布目前草稿</button>';
+  $('editor').prepend(panel);
+  $('publish').addEventListener('click',publishDraft);
+}
+function base64Utf8(text){const bytes=new TextEncoder().encode(text);let binary='';for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(binary);}
+async function publishDraft(){
+  const token=$('publish-token').value.trim();if(!token){status('請輸入 GitHub Token。',true);return;}
+  try{validate(draft);$('publish').disabled=true;status('正在讀取 GitHub 目前版本…');const headers={Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','Content-Type':'application/json'};const url='https://api.github.com/repos/swallow0120-stack/av-collection/contents/data/catalog.json';const current=await fetch(url+'?ref=main',{headers});if(!current.ok)throw Error(`讀取 GitHub 失敗（${current.status}）。`);const file=await current.json();const body={message:'Update collection catalog from editor',content:base64Utf8(JSON.stringify(draft,null,2)+'\n'),sha:file.sha,branch:'main'};const result=await fetch(url,{method:'PUT',headers,body:JSON.stringify(body)});if(!result.ok)throw Error(`發布失敗（${result.status}），請確認 Token 權限。`);$('publish-token').value='';status('已發布草稿，GitHub Actions 將自動驗證並更新網站。');}catch(e){status(e.message,true);}finally{$('publish').disabled=false;}}
 function resetForm(){editing=null;$('item-form').reset();$('form-title').textContent='新增收藏';}
 function editItem(item){editing=item.code;$('form-title').textContent='編輯 '+item.code;$('code').value=item.code;$('item-category').value=item.category;options($('cast'),draft.people.map(p=>[p.id,p.name]),item.people);$('note').value=item.note||'';$('poster-url').value=item.poster_url||'';$('item-form').scrollIntoView({behavior:'smooth',block:'center'});$('code').focus();}
 function attempt(fn){try{fn();}catch(e){status(e.message,true);}}
@@ -101,6 +112,6 @@ async function init(){try{ensurePosterField();
   [published,baseline]=await Promise.all(responses.map(r=>r.json()));validate(published);draft=clone(published);
   let message='已載入正式版。修改後請儲存草稿，再匯出發布。';
   try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved){validate(saved.catalog);if(saved.base===JSON.stringify(published)){draft=saved.catalog;message='已恢復尚未發布的本機草稿。';}else{message='正式版已有更新。舊草稿未自動套用；請先匯出舊草稿備份，再重新整理資料。';const b=document.createElement('button');b.textContent='下載舊草稿';b.onclick=()=>download(saved.catalog,'previous-draft.json');$('status').after(b);}}}catch(e){message='無法恢復本機草稿；已載入正式版。'+e.message;}
-  $('editor').hidden=false;render();status(message);
+  $('editor').hidden=false;ensurePublishField();render();status(message);
 }catch(e){status(e.message,true);}}
 init();
