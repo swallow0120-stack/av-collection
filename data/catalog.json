@@ -1718,7 +1718,8 @@
       "people": [
         "person-09"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "SNOS-056",
@@ -1742,7 +1743,8 @@
       "people": [
         "person-09"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SONE-499",
@@ -1750,7 +1752,8 @@
       "people": [
         "person-09"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "SONE-817",
@@ -1766,7 +1769,8 @@
       "people": [
         "person-09"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "SNOS-115",
@@ -1826,7 +1830,8 @@
         "person-11",
         "person-33"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SNOS-059",
@@ -1834,7 +1839,8 @@
       "people": [
         "person-11"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SNOS-106",
@@ -1842,7 +1848,8 @@
       "people": [
         "person-11"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SNOS-148",
@@ -1850,7 +1857,8 @@
       "people": [
         "person-11"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SNOS-171",
@@ -1858,7 +1866,8 @@
       "people": [
         "person-11"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SNOS-232",
@@ -1866,7 +1875,8 @@
       "people": [
         "person-11"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SNOS-309",
@@ -1877,7 +1887,8 @@
       "note": "",
       "lookup_aliases": [
         "SNOS-309"
-      ]
+      ],
+      "media_type": "BD"
     },
     {
       "code": "9SNOS-342",
@@ -1885,7 +1896,8 @@
       "people": [
         "person-11"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "TEK-099",
@@ -1901,7 +1913,8 @@
       "people": [
         "person-12"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "OFJE-653",
@@ -1917,7 +1930,8 @@
       "people": [
         "person-13"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9OFJE-412",
@@ -1925,7 +1939,8 @@
       "people": [
         "person-13"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9OFJE-434",
@@ -1933,7 +1948,8 @@
       "people": [
         "person-13"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "OFJE-402",
@@ -1949,7 +1965,8 @@
       "people": [
         "person-14"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "OFJE-550",
@@ -1965,7 +1982,8 @@
       "people": [
         "person-14"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SSNI-204",
@@ -1973,7 +1991,8 @@
       "people": [
         "person-15"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "WTEN-157",
@@ -1992,7 +2011,8 @@
       "people": [
         "person-16"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "FPRE-213",
@@ -2041,7 +2061,8 @@
         "person-20",
         "person-21"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SSNI-056",
@@ -2050,7 +2071,8 @@
         "person-22",
         "person-23"
       ],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "FCB-008",
@@ -2072,7 +2094,8 @@
       "code": "9MIRD-237",
       "category": "category-22",
       "people": [],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "MIRD-253",
@@ -2084,7 +2107,8 @@
       "code": "9MIRD-267",
       "category": "category-22",
       "people": [],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "OFJE-596",
@@ -2108,7 +2132,8 @@
       "code": "9SONE-118",
       "category": "category-22",
       "people": [],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "SONE-560",
@@ -2120,19 +2145,22 @@
       "code": "9SONE-561",
       "category": "category-22",
       "people": [],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SONE-563",
       "category": "category-22",
       "people": [],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     },
     {
       "code": "9SONE-565",
       "category": "category-22",
       "people": [],
-      "note": ""
+      "note": "",
+      "media_type": "BD"
     }
   ]
 }
