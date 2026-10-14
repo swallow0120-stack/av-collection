@@ -30,3 +30,9 @@
 .preview-controls{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .preview-controls .button,.preview-controls button{font-size:.75rem;padding:7px 9px}
 .preview-status{font-size:.72rem;color:var(--muted);margin:8px 0 0;overflow-wrap:anywhere}
+.entry-actions{display:flex;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.entry-edit{width:100%;text-align:center;font-size:.8rem;padding:7px 10px;background:var(--card);color:var(--accent);border-color:#b8cec0}
+.entry-edit:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.collection-grid .entry{box-shadow:0 2px 8px rgba(32,38,35,.05);transition:transform .15s ease,box-shadow .15s ease}
+.collection-grid .entry:hover{transform:translateY(-2px);box-shadow:0 5px 16px rgba(32,38,35,.1)}
+
