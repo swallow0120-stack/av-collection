@@ -2053,11 +2053,12 @@
     },
     {
       "code": "FCB-008",
-      "category": "category-22",
+      "category": "category-02",
       "people": [
         "person-02"
       ],
-      "note": ""
+      "note": "",
+      "poster_url": ""
     },
     {
       "code": "HUNTC-482",
