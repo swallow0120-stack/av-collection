@@ -22,7 +22,7 @@ function validate(data) {
   data.items.forEach(x => {
     if (typeof x.code !== 'string' || !/^\d*[A-Z]+-\d{3,6}(?:-V)?$/.test(x.code) || codes.has(x.code)) throw Error(`番號格式錯誤或重複：${x.code || ''}`);
     codes.add(x.code);
-    if (!cats.has(x.category) || !Array.isArray(x.people) || x.people.some(p => !people.has(p)) || new Set(x.people).size !== x.people.length || (x.note !== undefined && typeof x.note !== 'string')) throw Error('作品分類或參與者不正確。');
+    if (!cats.has(x.category) || !Array.isArray(x.people) || x.people.some(p => !people.has(p)) || new Set(x.people).size !== x.people.length || (x.note !== undefined && typeof x.note !== 'string') || (x.media_type !== undefined && !['DVD','BD'].includes(x.media_type))) throw Error('作品分類、格式或參與者不正確。');
   });
   const lookupNames = new Set(codes);
   data.items.forEach(x => {
@@ -87,15 +87,15 @@ async function publishDraft(){
   const token=$('publish-token').value.trim();if(!token){status('請輸入 GitHub Token。',true);return;}
   if($('remember-token').checked)localStorage.setItem('collection-github-token',token);else localStorage.removeItem('collection-github-token');
   try{validate(draft);$('publish').disabled=true;status('正在讀取 GitHub 目前版本…');const headers={Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','Content-Type':'application/json'};const url='https://api.github.com/repos/swallow0120-stack/av-collection/contents/data/catalog.json';const current=await fetch(url+'?ref=main',{headers});if(!current.ok)throw Error(`讀取 GitHub 失敗（${current.status}）。`);const file=await current.json();const body={message:'Update collection catalog from editor',content:base64Utf8(JSON.stringify(draft,null,2)+'\n'),sha:file.sha,branch:'main'};const result=await fetch(url,{method:'PUT',headers,body:JSON.stringify(body)});if(!result.ok)throw Error(`發布失敗（${result.status}），請確認 Token 權限。`);$('publish-token').value='';status('已發布草稿，GitHub Actions 將自動驗證並更新網站。');}catch(e){status(e.message,true);}finally{$('publish').disabled=false;}}
-function resetForm(){editing=null;$('item-form').reset();$('form-title').textContent='新增收藏';}
-function editItem(item){editing=item.code;$('form-title').textContent='編輯 '+item.code;$('code').value=item.code;$('item-category').value=item.category;options($('cast'),draft.people.map(p=>[p.id,p.name]),item.people);$('note').value=item.note||'';$('poster-url').value=item.poster_url||'';$('item-form').scrollIntoView({behavior:'smooth',block:'center'});$('code').focus();}
+function resetForm(){editing=null;$('item-form').reset();$('media-type').value='DVD';$('form-title').textContent='新增收藏';}
+function editItem(item){editing=item.code;$('form-title').textContent='編輯 '+item.code;$('code').value=item.code;$('item-category').value=item.category;$('media-type').value=item.media_type||'DVD';options($('cast'),draft.people.map(p=>[p.id,p.name]),item.people);$('note').value=item.note||'';$('poster-url').value=item.poster_url||'';$('item-form').scrollIntoView({behavior:'smooth',block:'center'});$('code').focus();}
 function attempt(fn){try{fn();}catch(e){status(e.message,true);}}
 function download(data,name){const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 $('item-form').addEventListener('submit',e=>{e.preventDefault();attempt(()=>{
   const next=clone(draft),code=$('code').value.trim().toUpperCase(),category=$('item-category').value;
   const people=[...$('cast').selectedOptions].map(o=>o.value);
   const existing=editing?next.items.find(x=>x.code===editing):{};
-  const item={...existing,code,category,people:people.length?people:next.categories.find(c=>c.id===category).people.slice(),note:$('note').value.trim(),poster_url:$('poster-url').value.trim()};
+  const item={...existing,code,category,media_type:$('media-type').value,people:people.length?people:next.categories.find(c=>c.id===category).people.slice(),note:$('note').value.trim(),poster_url:$('poster-url').value.trim()};
   if($('poster-file').dataset.dataUrl)item.poster_data_url=$('poster-file').dataset.dataUrl;
   if(editing){const index=next.items.findIndex(x=>x.code===editing);next.items[index]=item;}else next.items.push(item);
   save(next,'已儲存');resetForm();
