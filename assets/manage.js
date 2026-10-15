@@ -3,7 +3,7 @@ const $ = id => document.getElementById(id);
 const KEY = 'collection-draft-v1';
 let published, draft, baseline, editing = null, history = [], publishing = false;
 const clone = value => JSON.parse(JSON.stringify(value));
-function status(message, error = false) { $('status').textContent = message; $('status').className = error ? 'error' : ''; }
+function status(message, error = false) { $('status').textContent = message; $('status').className = error ? 'error' : ''; const local=$('form-status'); if(local){local.textContent=message;local.className=error?'error':'form-status';} }
 function validate(data) {
   if (data?.schema_version !== 1 || !['people','categories','items'].every(k => Array.isArray(data[k]))) throw Error('檔案格式不符。');
   if (data.items.length > 10000) throw Error('最多支援 10,000 筆收藏。');
