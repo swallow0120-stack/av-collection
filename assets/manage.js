@@ -1,7 +1,7 @@
 'use strict';
 const $ = id => document.getElementById(id);
 const KEY = 'collection-draft-v1';
-let published, draft, baseline, editing = null, history = [];
+let published, draft, baseline, editing = null, history = [], publishing = false;
 const clone = value => JSON.parse(JSON.stringify(value));
 function status(message, error = false) { $('status').textContent = message; $('status').className = error ? 'error' : ''; }
 function validate(data) {
@@ -90,9 +90,10 @@ function ensurePublishField(){
 }
 function base64Utf8(text){const bytes=new TextEncoder().encode(text);let binary='';for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(binary);}
 async function publishDraft(){
+  if(publishing)return;
   const token=($('publish-token').value.trim()||localStorage.getItem('collection-github-token')||'');if(!token){status('請輸入 GitHub Token。',true);return;}
   if($('remember-token').checked)localStorage.setItem('collection-github-token',token);else localStorage.removeItem('collection-github-token');
-  try{validate(draft);$('publish').disabled=true;const headers={Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','Content-Type':'application/json'};const url='https://api.github.com/repos/swallow0120-stack/av-collection/contents/data/catalog.json';const content=base64Utf8(JSON.stringify(draft,null,2)+'\n');let result;for(let attempt=0;attempt<2;attempt++){status(attempt?'遠端資料已更新，正在重新同步後發布…':'正在讀取 GitHub 目前版本…');const current=await fetch(url+'?ref=main',{headers});if(!current.ok)throw Error(`讀取 GitHub 失敗（${current.status}）。`);const file=await current.json();result=await fetch(url,{method:'PUT',headers,body:JSON.stringify({message:'Update collection catalog from editor',content,sha:file.sha,branch:'main'})});if(result.ok)break;if(result.status!==409||attempt)throw Error(`發布失敗（${result.status}），請稍後再試。`);} $('publish-token').value='';status('已發布草稿，GitHub Actions 將自動驗證並更新網站。');}catch(e){status(e.message,true);}finally{$('publish').disabled=false;}}
+  try{publishing=true;validate(draft);publish.disabled=true;const headers={Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','Content-Type':'application/json'};const url='https://api.github.com/repos/swallow0120-stack/av-collection/contents/data/catalog.json';const content=base64Utf8(JSON.stringify(draft,null,2)+'\n');let result;for(let attempt=0;attempt<2;attempt++){status(attempt?'遠端資料已更新，正在重新同步後發布…':'正在讀取 GitHub 目前版本…');const current=await fetch(url+'?ref=main',{headers});if(!current.ok)throw Error(`讀取 GitHub 失敗（${current.status}）。`);const file=await current.json();result=await fetch(url,{method:'PUT',headers,body:JSON.stringify({message:'Update collection catalog from editor',content,sha:file.sha,branch:'main'})});if(result.ok)break;if(result.status!==409||attempt)throw Error(`發布失敗（${result.status}），請稍後再試。`);} $('publish-token').value='';status('已發布草稿，GitHub Actions 將自動驗證並更新網站。');}catch(e){status(e.message,true);}finally{$('publish').disabled=false;}}
 function resetForm(){editing=null;$('item-form').reset();$('media-type').value='DVD';$('form-title').textContent='新增收藏';}
 function editItem(item){editing=item.code;$('form-title').textContent='編輯 '+item.code;$('code').value=item.code;$('item-category').value=item.category;$('media-type').value=item.media_type||'DVD';options($('cast'),draft.people.map(p=>[p.id,p.name]),item.people);$('note').value=item.note||'';$('poster-url').value=item.poster_url||'';$('item-form').scrollIntoView({behavior:'smooth',block:'center'});$('code').focus();}
 function attempt(fn){try{fn();}catch(e){status(e.message,true);}}
@@ -126,4 +127,8 @@ async function init(){try{ensurePosterField();
   status(message);
 }catch(e){status(e.message,true);}}
 init();
+
+
+
+
 
