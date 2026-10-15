@@ -2119,8 +2119,12 @@
     {
       "code": "OFJE-620",
       "category": "category-22",
-      "people": [],
-      "note": ""
+      "people": [
+        "person-09"
+      ],
+      "note": "",
+      "media_type": "DVD",
+      "poster_url": ""
     },
     {
       "code": "OFJE-701",
