@@ -2136,9 +2136,12 @@
     {
       "code": "9SONE-118",
       "category": "category-22",
-      "people": [],
+      "people": [
+        "person-09"
+      ],
       "note": "",
-      "media_type": "BD"
+      "media_type": "BD",
+      "poster_url": ""
     },
     {
       "code": "SONE-560",
