@@ -2146,8 +2146,12 @@
     {
       "code": "SONE-560",
       "category": "category-22",
-      "people": [],
-      "note": ""
+      "people": [
+        "person-09"
+      ],
+      "note": "",
+      "media_type": "DVD",
+      "poster_url": ""
     },
     {
       "code": "9SONE-561",
