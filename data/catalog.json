@@ -2152,9 +2152,13 @@
     {
       "code": "9SONE-561",
       "category": "category-22",
-      "people": [],
+      "people": [
+        "person-09",
+        "person-11"
+      ],
       "note": "",
-      "media_type": "BD"
+      "media_type": "BD",
+      "poster_url": ""
     },
     {
       "code": "9SONE-563",
